@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import SupportRequestForm from "./SupportRequestForm"
+import SmileyFace from "./smiley"
 
 export default function Component() {
 
@@ -95,7 +96,7 @@ export default function Component() {
             <DropdownMenuTrigger asChild>
               <Button className="rounded-full border border-gray-200 border-gray-700 w-8 h-8 text-white dark:border-gray-800" size="icon" variant="ghost">
 
-                <smileyFace className="rounded-full"/>
+                <SmileyFace className="rounded-full"/>
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>
