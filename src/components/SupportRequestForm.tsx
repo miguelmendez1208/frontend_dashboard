@@ -47,8 +47,8 @@ const SupportRequestForm = () => {
       email,
       description,
     };
-
-    const apiUrl = `${process.env.API_URL}?name=${name}&email=${email}&description=${description}`;
+    
+    const apiUrl = `https://frontend-dashboard-opal.vercel.app/api/createData?name=${name}&email=${email}&description=${description}`;
     console.log(formData);
     try {
       const response = await fetch(apiUrl);
