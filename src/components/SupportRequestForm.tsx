@@ -15,10 +15,8 @@ const SupportRequestForm = () => {
 
   // Reset 'submitted' state after 5 seconds
   useEffect(() => {
-    if (submitted) {
-      const timer = setTimeout(() => {
-        setSubmitted(false);
-      }, 2000);
+    if (submitted) {https://backend-dashboard-tau.vercel.app/
+
       return () => clearTimeout(timer); // Clean up the timeout
     }
   }, [submitted]);
@@ -47,8 +45,8 @@ const SupportRequestForm = () => {
       email,
       description,
     };
-    
-    const apiUrl = `http://localhost:3001/api/createData?name=${name}&email=${email}&description=${description}`;
+
+    const apiUrl = `${process.env.API_URL}?name=${name}&email=${email}&description=${description}`;
     console.log(formData);
     try {
       const response = await fetch(apiUrl);
