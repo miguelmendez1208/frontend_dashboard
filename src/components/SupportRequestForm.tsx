@@ -1,9 +1,7 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { CardTitle, CardDescription, CardHeader, CardContent, Card, CardFooter } from "@/components/ui/card"
-import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -13,7 +11,21 @@ const SupportRequestForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
+  // Reset 'submitted' state after 5 seconds
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        setSubmitted(false);
+      }, 2000);
+      return () => clearTimeout(timer); // Clean up the timeout
+    }
+  }, [submitted]);
+
+  if (submitted) {
+    return (<p> Thanks for your Submission! </p>);
+  }
   // Handle input changes
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -35,8 +47,8 @@ const SupportRequestForm = () => {
       email,
       description,
     };
-
-    const apiUrl = 'localhost:3005';
+    //http://localhost:3000/api/add-pet?petName=Fluffy&ownerName=John
+    const apiUrl = 'http://localhost:3001/api/createData';
     console.log(formData);
     try {
       const response = await fetch(apiUrl, {
@@ -53,6 +65,7 @@ const SupportRequestForm = () => {
 
       const result = await response.json();
       console.log('Success:', result);
+      setSubmitted(true);
     } catch (error) {
       console.error('Error:', error);
     }
