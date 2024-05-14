@@ -47,7 +47,7 @@ const SupportRequestForm = () => {
       email,
       description,
     };
-    //http://localhost:3000/api/add-pet?petName=Fluffy&ownerName=John
+    
     const apiUrl = `http://localhost:3001/api/createData?name=${name}&email=${email}&description=${description}`;
     console.log(formData);
     try {

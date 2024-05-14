@@ -10,7 +10,7 @@ export async function GET(request: Request) {
  
   try {
     if (!name || !email ||!description) throw new Error('Name, email, and description are required');
-    await sql`INSERT INTO users (Name, email, description, status) VALUES (${name}, ${email}, ${status}, ${status});`;
+    await sql`INSERT INTO users (Name, email, description, status) VALUES (${name}, ${email}, ${description}, ${status});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
