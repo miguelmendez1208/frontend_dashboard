@@ -48,16 +48,10 @@ const SupportRequestForm = () => {
       description,
     };
     //http://localhost:3000/api/add-pet?petName=Fluffy&ownerName=John
-    const apiUrl = 'http://localhost:3001/api/createData';
+    const apiUrl = `http://localhost:3001/api/createData?name=${name}&email=${email}&description=${description}`;
     console.log(formData);
     try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(apiUrl);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
