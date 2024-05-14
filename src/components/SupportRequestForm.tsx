@@ -15,8 +15,10 @@ const SupportRequestForm = () => {
 
   // Reset 'submitted' state after 5 seconds
   useEffect(() => {
-    if (submitted) {https://backend-dashboard-tau.vercel.app/
-
+    if (submitted) {      
+      const timer = setTimeout(() => {
+      setSubmitted(false);
+    }, 2000);
       return () => clearTimeout(timer); // Clean up the timeout
     }
   }, [submitted]);
